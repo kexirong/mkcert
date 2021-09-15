@@ -11,7 +11,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"net"
 	"net/mail"
 	"net/url"
 	"os"
@@ -211,9 +210,9 @@ func (m *mkcert) Run(args []string) {
 
 	hostnameRegexp := regexp.MustCompile(`(?i)^(\*\.)?[0-9a-z_-]([0-9a-z._-]*[0-9a-z_-])?$`)
 	for i, name := range args {
-		if ip := net.ParseIP(name); ip != nil {
-			continue
-		}
+		// if ip := net.ParseIP(name); ip != nil {
+		// 	continue
+		// }
 		if email, err := mail.ParseAddress(name); err == nil && email.Address == name {
 			continue
 		}
